@@ -54,10 +54,20 @@ function dropElement(html, tagName, attrMatch) {
 }
 
 /**
- * The page reduced to the text a knowledge module quotes from: no scripts,
- * no nav, no footer, and none of the sitewide CTA band that repeats on all
- * 106 pages. Deterministic and per-page — it never looks at another page, so
- * adding a page to the site cannot move an existing page's hash.
+ * The page reduced to the text a knowledge module quotes from: no scripts, no
+ * nav, no footer. Deterministic and per-page — it never looks at another page,
+ * so adding a page to the site cannot move an existing page's hash.
+ *
+ * Chrome is stripped by the element that carries it, and the tag in each rule
+ * has to match the live markup: Webflow renders the navbar as a div and the
+ * footer as a section, so `section_footer` matched as a div silently kept the
+ * whole footer sitemap in every extract.
+ *
+ * `section_cta` is deliberately *not* stripped. It repeats verbatim on all 107
+ * pages, so it reads like chrome, but it is the only place cadreai.com states
+ * what the Cadre portal is — "a centralized portal to track tools, agents,
+ * training, and results" — which is the published half of plan.md's F3. Losing
+ * it made a real capability look unpublished to curators.
  */
 export function cleanExtract(html) {
   let t = html
@@ -65,8 +75,7 @@ export function cleanExtract(html) {
   t = t.replace(/<(script|style|noscript|svg)\b[\s\S]*?<\/\1>/gi, ' ')
   t = dropElement(t, 'nav')
   t = dropElement(t, 'div', /class="[^"]*\bnavbar_component\b/i)
-  t = dropElement(t, 'div', /class="[^"]*\bsection_footer\b/i)
-  t = dropElement(t, 'div', /class="[^"]*\bcta_content\b/i)
+  t = dropElement(t, 'section', /class="[^"]*\bsection_footer\b/i)
   t = t.replace(/<[^>]+>/g, ' ')
   t = t
     .replace(/&nbsp;|&#160;/g, ' ')
