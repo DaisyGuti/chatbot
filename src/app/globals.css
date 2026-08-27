@@ -1,0 +1,243 @@
+/*
+ * Phase 6 (`ux-curator`): the states plan.md §7 gave to this phase — pending/streaming, empty,
+ * refusal links, narrow viewports, focus visibility, and contrast. Styling itself stays boring on
+ * purpose; the brief does not score it and asks for effort on states instead.
+ */
+
+*,
+*::before,
+*::after {
+  /* Padding and border no longer add to a declared width — the thing that most often makes a
+     narrow layout overflow sideways without anyone changing a single width value on purpose. */
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+  color: #14181f;
+  /* Prevents the odd off-viewport element (a long unbroken URL, a wide button) from opening a
+     horizontal scrollbar on the whole page — the phone-width check in the brief's §1.5. */
+  overflow-x: hidden;
+}
+
+main {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 2rem 1rem 4rem;
+}
+
+.chat {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.empty-state {
+  padding: 1rem;
+  border: 1px solid #d9dde4;
+  border-radius: 0.5rem;
+  background: #fbfbfa;
+}
+
+.empty-state p {
+  margin: 0 0 0.75rem;
+}
+
+.prompt-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.prompt-chip {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: #fff;
+}
+
+.thread {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  /* The thread scrolls in its own box once it grows past a comfortable height, so the composer
+     right after it stays one scroll away instead of sliding further down the page every turn — the
+     "composer stays reachable" half of the phone-width check. */
+  max-height: 60vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.turn {
+  margin-bottom: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  white-space: pre-wrap;
+  /* A long link (the contact URL, a mailto:) wraps inside the bubble instead of forcing the page
+     wider than the viewport. */
+  overflow-wrap: anywhere;
+}
+
+.turn p {
+  margin: 0;
+}
+
+.turn p + p {
+  margin-top: 0.5rem;
+}
+
+.turn-user {
+  background: #eef1f6;
+}
+
+.turn-assistant {
+  background: #f7f7f5;
+  border: 1px solid #e4e4e0;
+}
+
+.turn-pending {
+  color: #4b5563;
+  font-style: italic;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .turn-pending {
+    animation: pending-pulse 1.4s ease-in-out infinite;
+  }
+}
+
+@keyframes pending-pulse {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.notice {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #d8b4b4;
+  border-radius: 0.5rem;
+  background: #fdf3f3;
+  /* #8a2f2f on #fdf3f3 clears 4.5:1 comfortably; the default inherited near-black text on this pink
+     already passes too, but the color also flags this specifically as a problem, not a message. */
+  color: #7a2222;
+}
+
+.composer {
+  display: flex;
+  gap: 0.5rem;
+  align-items: stretch;
+  /* Sits directly under the (bounded-height, scrolling) thread rather than being pushed further
+     down the page every turn — see the `.thread` comment above. Deliberately not
+     `position: sticky`: the lead-capture section can follow right after this form, and a sticky
+     composer would sit on top of it while the page scrolled past. */
+  background: #fff;
+  padding-top: 0.25rem;
+}
+
+.composer label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+.composer input {
+  flex: 1;
+}
+
+.lead {
+  margin-top: 2rem;
+  padding: 1rem;
+  border: 1px solid #d9dde4;
+  border-radius: 0.5rem;
+  background: #fbfbfa;
+}
+
+.lead h2 {
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+.lead label {
+  display: block;
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.lead input,
+.lead textarea {
+  width: 100%;
+}
+
+.lead button {
+  margin-top: 1rem;
+}
+
+input,
+textarea,
+button {
+  font: inherit;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid #c8ccd3;
+  border-radius: 0.375rem;
+  /* A minimum comfortable tap target on a phone (roughly 44px), without inflating the desktop look
+     much — the brief's §1.5 "tap targets are big enough to hit". */
+  min-height: 2.75rem;
+}
+
+::placeholder {
+  /* The browser default light gray placeholder measures under 4.5:1 on white in some UAs; this one
+     is chosen to clear it — the brief's §2 contrast floor applies to placeholder text too. */
+  color: #4b5563;
+  opacity: 1;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: #1857c0;
+}
+
+a:visited {
+  color: #5b3a9b;
+}
+
+/* Focus is never removed without a visible replacement — the brief's §2 floor, applied to every
+   interactive element rather than left to whatever the browser default happens to render. */
+:focus-visible {
+  outline: 2px solid #1857c0;
+  outline-offset: 2px;
+}
+
+[disabled] {
+  /* Disabled state is never color-only: the button's own label text already changes ("Send" ->
+     "Sending…"), and this adds a visibly different, not-just-duller treatment plus a cursor that
+     is not a text/pointer cursor, on top of the native `disabled` semantics assistive tech already
+     announces. */
+  cursor: not-allowed;
+  color: #6b7280;
+  background: #eceef1;
+  border-color: #d5d9e0;
+}
+
+@media (max-width: 30rem) {
+  main {
+    padding: 1rem 0.75rem 2rem;
+  }
+
+  .thread {
+    max-height: 55vh;
+  }
+}

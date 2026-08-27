@@ -18,6 +18,12 @@ next-env.d.ts
 *.tsbuildinfo
 .vercel
 
+# Playwright (npm run test:e2e) output
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+
 # Python
 __pycache__/
 *.pyc
