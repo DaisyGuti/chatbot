@@ -1,0 +1,33 @@
+{
+  "name": "cadre-ai-support-chatbot",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint --max-warnings=0",
+    "typecheck": "next typegen && tsc --noEmit",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "mock:openrouter": "node mock/openrouter-server.mjs"
+  },
+  "dependencies": {
+    "@ai-sdk/react": "4.0.86",
+    "@openrouter/ai-sdk-provider": "^3.0.0",
+    "ai": "^7.0.83",
+    "next": "16.3.3",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.62.1",
+    "@types/node": "^22",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.3",
+    "typescript": "^5",
+    "vitest": "^4.1.11"
+  }
+}

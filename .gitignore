@@ -13,6 +13,11 @@ build/
 .next/
 .turbo/
 
+# Next.js / Vercel build artifacts
+next-env.d.ts
+*.tsbuildinfo
+.vercel
+
 # Python
 __pycache__/
 *.pyc
