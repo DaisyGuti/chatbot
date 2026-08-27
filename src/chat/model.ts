@@ -21,6 +21,16 @@ export const FALLBACK_MODEL = "openai/gpt-5-mini";
 export const MAX_OUTPUT_TOKENS = 1024;
 
 /**
+ * `gpt-5-mini` writes its reasoning into the same text stream as its answer unless told not to.
+ * Found live: asked about pricing, it spent the entire output budget narrating which module to
+ * cite and never reached an answer — a real client would see that, not a refusal, if a Sonnet
+ * outage ever failed over to it. `exclude: true` drops the trace from the response; low effort
+ * keeps it from eating the budget it needs for the actual reply. Harmless on Sonnet, which doesn't
+ * emit reasoning tokens on this path to begin with.
+ */
+const REASONING = { exclude: true, effort: "low" } as const;
+
+/**
  * Built per request rather than at module load so `next build` does not need the key, and so a key
  * rotated in the Vercel dashboard takes effect without a redeploy.
  */
@@ -36,7 +46,7 @@ export function chatModel(apiKey: string) {
   // named model instead of the primary+fallback pair, without a second call this codebase makes.
   const evalModel = process.env.EVAL_MODEL;
   if (evalModel) {
-    return openrouter(evalModel, { models: [evalModel] });
+    return openrouter(evalModel, { models: [evalModel], reasoning: REASONING });
   }
 
   return openrouter(PRIMARY_MODEL, {
@@ -46,5 +56,6 @@ export function chatModel(apiKey: string) {
     // this repo has no retry loop and no health check, and why `CLAUDE.md`'s one-model-call-per-turn
     // rule still holds through a failover.
     models: [PRIMARY_MODEL, FALLBACK_MODEL],
+    reasoning: REASONING,
   });
 }

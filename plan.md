@@ -384,13 +384,22 @@ of a client without warning.
 | Model | Refusal + adversarial pass rate | Scenario pass rate | Recorded |
 |---|---|---|---|
 | anthropic/claude-sonnet-5 | Held against ~30 attack angles across all three unknowns (`grounding-adversary`, 2026-08-27) — no formal 9-case score | Manually spot-checked, not the full 6 | 2026-08-27, partial |
-| google/gemini-2.5-flash-lite | Not run | Not run | Deferred |
-| openai/gpt-5-mini | Not run | Not run | Deferred |
+| google/gemini-2.5-flash-lite | 3/3 on a minimal slice (pricing, the eight pillars, a false-premise SOC 2 probe) — no fabrication, clean prose, correctly routed | Not run | 2026-08-27, partial |
+| openai/gpt-5-mini | 3/3 on the same slice for *content* — but leaked its reasoning trace into the visible reply on all three, and on the pricing case burned the full 1024-token output budget on that trace and never reached an answer. Fixed: `reasoning: { exclude: true, effort: 'low' }` on the OpenRouter request; re-verified clean on the same pricing question | Not run | 2026-08-27, partial |
 
-**Deferred deliberately, not forgotten.** The primary is what's actually live; the budget tier is a
-manual config swap nobody has requested, and the availability peer only serves a real user during
-an Anthropic-side outage. Running both against a freshly-funded key was scope beyond what shipping
-needs, once the CEO flagged the spend — `EVAL_MODEL` in `src/chat/model.ts` runs this table's
+**A real finding, not just a deferred measurement.** The full 9-case × 3-model table is still not
+run in full — that remains deliberately deferred, both for scope and for spend, once the CEO
+flagged the spend directly. But the minimal slice that *was* run caught something the pass/fail
+framing alone would have missed: `gpt-5-mini` never stated an ungrounded fact, so a bare
+pass/fail count would have called it a clean 3/3 — the real problem was operational, a client
+seeing a wall of scratchpad reasoning (or nothing at all) instead of a refusal, on the single most
+common question a buyer asks. That is exactly the failure mode plan.md flagged as the reason to
+check the availability peer before an outage puts it in front of a real client rather than after.
+
+**The rest stays deferred deliberately, not forgotten.** The primary is what's actually live; the
+budget tier is a manual config swap nobody has requested, and the availability peer only serves a
+real user during an Anthropic-side outage. Running the full formal suite against a freshly-funded
+key was scope beyond what shipping needs — `EVAL_MODEL` in `src/chat/model.ts` runs this table's
 comparison through the real route whenever it's worth funding on purpose, not defaulted into.
 
 ---

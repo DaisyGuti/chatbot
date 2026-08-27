@@ -24,7 +24,7 @@ behind every one of those decisions, and `CLAUDE.md` is the rules the build runs
 | 4 — Intent classification, escalation, lead capture | **Done** — routing verified with real model wording; lead capture driven end to end in a real browser (form appears, submits, logs server-side, renders a `mailto:` carrying all four fields) |
 | 5 — Deploy to Vercel | **Done** — [chatbot-wine-one-97.vercel.app](https://chatbot-wine-one-97.vercel.app), verified publicly reachable with a real streamed answer |
 | 6 — UI polish, error states | **Done, one part still open** — empty state, accessibility floor, phone-width layout, provider-failure rendering all verified; real streaming cadence now confirmed too. Not yet deliberately tested: the `models[]` fallback actually routing to `gpt-5-mini` on a real Sonnet failure (would need to break something on purpose against the funded key) |
-| 7 — Live eval and red-team against production, cost check | **Partial** — `grounding-adversary` ran ~30 attack angles against all three registered unknowns and none broke; it did find one real gap (the bot undercounting Cadre's services), which is fixed and re-verified. The full 15-case live-model table and the 3-model comparison (`plan.md` §5) are deliberately deferred — not required for this deploy, and left for a deliberate future spend rather than run by default |
+| 7 — Live eval and red-team against production, cost check | **Partial** — `grounding-adversary` ran ~30 attack angles against all three registered unknowns and none broke; it did find one real gap (the bot undercounting Cadre's services), which is fixed and re-verified. A minimal 2-model comparison found and fixed a real reasoning-leak bug in the `gpt-5-mini` fallback. The full 15-case live-model table is deliberately deferred — not required for this deploy, and left for a deliberate future spend rather than run by default |
 
 Planning was completed before any application code, per the brief's own guidance: *"Plan before
 coding. Write CLAUDE.md and plan.md first."*
@@ -145,6 +145,13 @@ of a cold one. [`plan.md` §5](plan.md#5-model-selection) prices all four candid
 multipliers, and the availability fallback, and is the only place those numbers live. It also holds
 the eval delta across all three models, so the choice — and the fallback pick — end up with a number
 behind them rather than an argument.
+
+A minimal live comparison (not the full formal suite — see `plan.md` §5) caught a real problem in
+the fallback: `gpt-5-mini` never stated an ungrounded fact, but it leaked its reasoning trace into
+the visible reply, and on a pricing question burned its entire output budget on that trace without
+ever reaching an answer. A real client hitting the fallback during a Sonnet outage would have seen
+that instead of a clean refusal. Fixed with `reasoning: { exclude: true, effort: 'low' }` on the
+OpenRouter request and re-verified clean on the same question.
 
 ---
 

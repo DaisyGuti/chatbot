@@ -171,3 +171,27 @@ activates in this repo, and a bare directory with no `.git` no-ops cleanly. Seco
 200 on the homepage with no deployment-protection gate blocking public access, and a real `/api/chat`
 call streamed a correctly grounded, cited answer with the exact `Transfer-Encoding: chunked` /
 `Connection: keep-alive` headers the streaming contract requires.
+
+## Two minimal, deliberately cheap follow-ups after deploy
+
+Two things were left explicitly open in the last report; the CEO asked for both, minimally.
+
+**`models[]` failover — inconclusive, honestly.** A deliberately invalid model id gets rejected by
+OpenRouter with a 400 before the fallback array is ever consulted — the failover only triggers on a
+genuine runtime failure of a *valid* model, not a malformed one. No cheap, reliable way to force a
+real transient failure from a healthy model on demand, so this stays unverified rather than marked
+passed on a test that didn't actually exercise it. No charge for the attempt.
+
+**Minimal 2-model comparison — found a real bug.** Three cases (pricing refusal, the eight-pillar
+anti-refusal, a false-premise SOC 2 probe) against `gemini-2.5-flash-lite` and `gpt-5-mini` through
+the real route via `EVAL_MODEL`. `gemini-2.5-flash-lite` held cleanly on content and prose. Neither
+model ever fabricated a fact, but `gpt-5-mini` leaked its reasoning trace into the visible reply on
+all three, and on the pricing question — the single most common one — spent its entire 1024-token
+budget on that trace and never produced an answer at all. A pass/fail count alone would have missed
+this: content was correct, delivery was broken. Fixed with `reasoning: { exclude: true, effort:
+'low' }` on the OpenRouter request; the same pricing question now returns a clean, complete,
+correctly-routed refusal. Total spend across both follow-ups: **~$0.014** (final: $0.6888 of $5).
+
+`plan.md` §5's table and README's Model selection section both updated with this finding rather
+than left generic — a fallback that's clean on *content* but broken on *delivery* is exactly the
+kind of thing the pass-rate framing alone would have hidden.
