@@ -3,7 +3,7 @@
 A customer-support chatbot for [Cadre AI](https://www.cadreai.com), built as a take-home
 technical assessment for the AI Engineer & FDE role.
 
-**Live demo:** _not yet deployed — see Status_
+**Live demo:** [chatbot-wine-one-97.vercel.app](https://chatbot-wine-one-97.vercel.app)
 **Planning docs:** [`plan.md`](plan.md) · [`CLAUDE.md`](CLAUDE.md) · [brief](docs/requirements.md)
 
 This file is the tour: what was decided and where the proof lives. `plan.md` is the reasoning
@@ -20,11 +20,11 @@ behind every one of those decisions, and `CLAUDE.md` is the rules the build runs
 | 0 — Planning docs, repo scaffold | **Done** |
 | 1 — Next.js scaffold, running locally | **Done** |
 | 2 — Knowledge modules, unknowns registry, retriever | **Done** |
-| 3 — Chat API, system prompt, streaming | **Done, pending a live key** — guards, streaming contract, ordered `models[]` and the cache breakpoint all verified against real HTTP; the six scenarios need a real `OPENROUTER_API_KEY` to answer end to end |
-| 4 — Intent classification, escalation, lead capture | **Done, one part pending a live key** — all three routes reach the model as a second system message, and a captured lead was driven end to end in a real browser: the form appears on the prospective route, submits, logs server-side, and renders a `mailto:hello@gocadre.ai` carrying all four fields. What a live key would add is how the model words each handoff; the routing itself is deterministic and tested |
-| 5 — Deploy to Vercel | On hold — testing locally first |
-| 6 — UI polish, error states | **Done, two parts pending a live key** — empty state, accessibility floor (`aria-live`, real labels, focus, contrast, disabled-state announcements), phone-width layout, and provider-failure rendering all verified in a real browser against a local build; the 4-spec Playwright pass (`npm run test:e2e`) is green. What a live key would add: watching a real answer stream and confirming the `models[]` fallback actually routes to `gpt-5-mini` rather than both entries failing alike |
-| 7 — Live eval and red-team against production, cost check | Not started |
+| 3 — Chat API, system prompt, streaming | **Done** — verified against a real funded key: grounded, cited answers with correct pricing/certification refusals |
+| 4 — Intent classification, escalation, lead capture | **Done** — routing verified with real model wording; lead capture driven end to end in a real browser (form appears, submits, logs server-side, renders a `mailto:` carrying all four fields) |
+| 5 — Deploy to Vercel | **Done** — [chatbot-wine-one-97.vercel.app](https://chatbot-wine-one-97.vercel.app), verified publicly reachable with a real streamed answer |
+| 6 — UI polish, error states | **Done, one part still open** — empty state, accessibility floor, phone-width layout, provider-failure rendering all verified; real streaming cadence now confirmed too. Not yet deliberately tested: the `models[]` fallback actually routing to `gpt-5-mini` on a real Sonnet failure (would need to break something on purpose against the funded key) |
+| 7 — Live eval and red-team against production, cost check | **Partial** — `grounding-adversary` ran ~30 attack angles against all three registered unknowns and none broke; it did find one real gap (the bot undercounting Cadre's services), which is fixed and re-verified. The full 15-case live-model table and the 3-model comparison (`plan.md` §5) are deliberately deferred — not required for this deploy, and left for a deliberate future spend rather than run by default |
 
 Planning was completed before any application code, per the brief's own guidance: *"Plan before
 coding. Write CLAUDE.md and plan.md first."*

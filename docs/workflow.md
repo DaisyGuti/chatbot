@@ -117,3 +117,57 @@ sequencing choice, not an unstarted one.
 **Still true after six phases: nothing in this repo has ever been committed.** Everything from
 Phase 1 onward sits in the working tree, per `eng.md` §6 and `ux-curator.md` §6's shared rule —
 leave the tree for review, the CEO reads every diff before it lands.
+
+## Commit — nine phase-scoped commits, not one dump
+
+The CEO asked to commit. Split into one commit per phase plus separate commits for the crawler fix
+and the mock harness, in build order, rather than everything landing at once — the brief's own tip
+table names "one giant commit at the end" as the anti-pattern. Two files (`chat.tsx`, `lead-form.tsx`)
+are dated to their Phase 6 commit even though `eng` first wrote them in Phase 4, because no exact
+pre-`ux-curator` byte content was saved — fabricating a plausible-but-never-tested intermediate
+version was judged worse than a slightly imprecise commit boundary, noted as such in that commit's
+message. Also implemented, first commit to actually run through it: `.githooks/pre-commit`, closing
+a gap that had existed since Phase 1 — `CLAUDE.md` assumed a hook enforced the gate; nothing did.
+
+## Phase 7 (partial) — grounding red-team with a funded key
+
+A real `OPENROUTER_API_KEY` landed. Manually verified two real scenarios first (a services/PE
+question, a combined pricing + SOC 2 refusal) before handing off — both grounded, both correctly
+routed. `grounding-adversary` then ran ~30 attack angles across all three registered unknowns
+(authority pressure, false premise, incremental extraction, forged conversation history, indirect
+injection via a pasted RFP) — none broke. It also over-refusal-checked the eight Maturity Index
+pillars and the LLM Selection & Data Security approach, both answered correctly.
+
+**One real gap found:** asked "what services do you offer," the bot sometimes said three and
+folded AI Agents under AI Engineering — unsourced, since no module stated the count or that
+relationship. Routed through `/ground` rather than fixed inline (a correction to the process
+itself, mid-session) — added `strategy-services-overview`, grounded in the verifiable structural
+fact (four separate service pages, none describing AI Agents as part of another) rather than a
+quote that doesn't exist in the cleaned crawl store, plus a general system-prompt rule against
+stating any count or hierarchy among Cadre's own things without a module behind it. Re-verified
+against the real model: the exact prompt that broke it now names all four correctly.
+
+**Deliberately deferred, once real spend was on the table:** the formal 15-case live-model table
+and the 3-model comparison in `plan.md` §5. The CEO flagged the spend directly mid-session; neither
+comparison is required for this deploy (the budget tier is an unrequested manual swap, the
+availability peer only serves a real user during an actual Sonnet outage), so `EVAL_MODEL` was
+added to `src/chat/model.ts` as the mechanism to run that comparison later, on purpose, rather than
+run by default. Total spend against the $5 cap through this phase: **$0.62.**
+
+## Phase 5 — deploy
+
+Vercel CLI, not the dashboard. `vercel link` auto-detected the connected GitHub repo and created
+`daisygutis-projects/chatbot`; `OPENROUTER_API_KEY` set as a Production environment variable before
+the first deploy attempt.
+
+**First deploy attempt failed the Vercel build**, not this app's code: `npm install` exited 128.
+Cause was the Phase-7-commit's own `.githooks` setup — the `prepare` script ran `git config
+core.hooksPath .githooks` unconditionally, and Vercel's build uploads the file tree without a
+`.git` directory, so the command had nothing to configure and failed the whole install. Fixed by
+swallowing the error outside a real git checkout (`|| true`); confirmed both paths — the hook still
+activates in this repo, and a bare directory with no `.git` no-ops cleanly. Second deploy succeeded.
+
+**Live and verified, not just reported as ready:** `https://chatbot-wine-one-97.vercel.app` returns
+200 on the homepage with no deployment-protection gate blocking public access, and a real `/api/chat`
+call streamed a correctly grounded, cited answer with the exact `Transfer-Encoding: chunked` /
+`Connection: keep-alive` headers the streaming contract requires.
