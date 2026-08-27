@@ -1,0 +1,754 @@
+{
+  "sitemap": "https://www.cadreai.com/sitemap.xml",
+  "pages": [
+    {
+      "url": "https://www.cadreai.com",
+      "slug": "home",
+      "file": "home.txt",
+      "chars": 10367,
+      "sha256": "a0c0b5aaa2d74cad48dd63686f17b8b72626822fa199fc4e49ce46058d4828af"
+    },
+    {
+      "url": "https://www.cadreai.com/2030-podcast",
+      "slug": "2030-podcast",
+      "file": "2030-podcast.txt",
+      "chars": 5535,
+      "sha256": "424f176b50118efcc8da3f30548e6a20e57ec489d2fe44ef184bb0d072581bba"
+    },
+    {
+      "url": "https://www.cadreai.com/about",
+      "slug": "about",
+      "file": "about.txt",
+      "chars": 5068,
+      "sha256": "dffc7aa79a6ac40d4a0a54d46c42a12573dd5a4292ccd3b318abd664284197a7"
+    },
+    {
+      "url": "https://www.cadreai.com/agents",
+      "slug": "agents",
+      "file": "agents.txt",
+      "chars": 6457,
+      "sha256": "ae4c208206b13171d9a142b14abe3edfb1e923171f60a2e961695576b89e52b9"
+    },
+    {
+      "url": "https://www.cadreai.com/ai-2030-podcast",
+      "slug": "ai-2030-podcast",
+      "file": "ai-2030-podcast.txt",
+      "chars": 10472,
+      "sha256": "f7d64c1570c8bcdec0c7e11b2a1bc2569752e6563ae75178f8d672f83426aac2"
+    },
+    {
+      "url": "https://www.cadreai.com/ai-engineering",
+      "slug": "ai-engineering",
+      "file": "ai-engineering.txt",
+      "chars": 4601,
+      "sha256": "aa35505ed5abbabb79e75c45156da37006c9df48c05de17407a73172d854c745"
+    },
+    {
+      "url": "https://www.cadreai.com/ai-transformation-intensive",
+      "slug": "ai-transformation-intensive",
+      "file": "ai-transformation-intensive.txt",
+      "chars": 7759,
+      "sha256": "f5a28c22fbeb055d78557fef2edf4694af9e7a42ddf431acb3b2edbf6fbba504"
+    },
+    {
+      "url": "https://www.cadreai.com/articles",
+      "slug": "articles",
+      "file": "articles.txt",
+      "chars": 6809,
+      "sha256": "f055d09bdcaf89bed06aca8b1748134185fd975dda06eaf7a5a860357401ea53"
+    },
+    {
+      "url": "https://www.cadreai.com/articles/ai-implementation-process-mapping",
+      "slug": "articles__ai-implementation-process-mapping",
+      "file": "articles__ai-implementation-process-mapping.txt",
+      "chars": 8968,
+      "sha256": "255f47ccb0450ca0d58fd75ae0af836eacc830ee08b8d9b7fa6ab0f371d4641c"
+    },
+    {
+      "url": "https://www.cadreai.com/articles/ai-model-selection",
+      "slug": "articles__ai-model-selection",
+      "file": "articles__ai-model-selection.txt",
+      "chars": 9714,
+      "sha256": "0aff92c3d78799bafc7dc2f36595f1b4559affe80b525b263ce24732434f3d05"
+    },
+    {
+      "url": "https://www.cadreai.com/articles/ai-readiness-is-your-business-positioned-to-thrive-in-the-ai-revolution",
+      "slug": "articles__ai-readiness-is-your-business-positioned-to-thrive-in-the-ai-revolution",
+      "file": "articles__ai-readiness-is-your-business-positioned-to-thrive-in-the-ai-revolution.txt",
+      "chars": 5573,
+      "sha256": "f2d41e8441cb6c59de1e401efd522666663e2d1cee51bb060b221ea5d96376b2"
+    },
+    {
+      "url": "https://www.cadreai.com/articles/ai-readiness-starts-with-your-data-not-the-model",
+      "slug": "articles__ai-readiness-starts-with-your-data-not-the-model",
+      "file": "articles__ai-readiness-starts-with-your-data-not-the-model.txt",
+      "chars": 5488,
+      "sha256": "b8fb33041d4050dc9701ced21b92e41d0bb8c405e3924e38313609e612cb127b"
+    },
+    {
+      "url": "https://www.cadreai.com/articles/ai-training-isnt-an-option-anymore",
+      "slug": "articles__ai-training-isnt-an-option-anymore",
+      "file": "articles__ai-training-isnt-an-option-anymore.txt",
+      "chars": 5035,
+      "sha256": "67f9f93255e60b9cd2b871ae669bb843c5c2ad1ba136916331956f8ea2c88fdc"
+    },
+    {
+      "url": "https://www.cadreai.com/articles/ai-voice-agent-call-center",
+      "slug": "articles__ai-voice-agent-call-center",
+      "file": "articles__ai-voice-agent-call-center.txt",
+      "chars": 10362,
+      "sha256": "c32161cef6ab32b786184032015c7a79244853dfee98b6f1091afef2bdd4a186"
+    },
+    {
+      "url": "https://www.cadreai.com/articles/cadre-ai-selected-as-an-official-openai-service-partner",
+      "slug": "articles__cadre-ai-selected-as-an-official-openai-service-partner",
+      "file": "articles__cadre-ai-selected-as-an-official-openai-service-partner.txt",
+      "chars": 4872,
+      "sha256": "2ebe6c8e8ad26aea9efc6e2ccf3bdca6eeea1e4eb244ad8868346e69acfa199f"
+    },
+    {
+      "url": "https://www.cadreai.com/articles/event-ai-leadership-intensive-oct-2025",
+      "slug": "articles__event-ai-leadership-intensive-oct-2025",
+      "file": "articles__event-ai-leadership-intensive-oct-2025.txt",
+      "chars": 5182,
+      "sha256": "6c87d034160e302c925397a55dff75d29040ad354c6296a9de97a3e45e73e9db"
+    },
+    {
+      "url": "https://www.cadreai.com/articles/from-data-chaos-to-clarity-how-clean-data-powers-ai-success",
+      "slug": "articles__from-data-chaos-to-clarity-how-clean-data-powers-ai-success",
+      "file": "articles__from-data-chaos-to-clarity-how-clean-data-powers-ai-success.txt",
+      "chars": 5509,
+      "sha256": "689f61587068af1508961c5b5566c52aae6daec814f1398c1f6a3b20c8516ce3"
+    },
+    {
+      "url": "https://www.cadreai.com/articles/from-manual-to-magical-how-ai-transforms-operational-efficiency",
+      "slug": "articles__from-manual-to-magical-how-ai-transforms-operational-efficiency",
+      "file": "articles__from-manual-to-magical-how-ai-transforms-operational-efficiency.txt",
+      "chars": 5253,
+      "sha256": "3a8b36cb4a4e074eda1d13527171f4b991849694d4242f295dd2d177f8be451f"
+    },
+    {
+      "url": "https://www.cadreai.com/articles/future-proofing-your-business-how-documenting-processes-today-prepares-you-for-the-age-of-ai-agents",
+      "slug": "articles__future-proofing-your-business-how-documenting-processes-today-prepares-you-for-the-age-of-ai-agents",
+      "file": "articles__future-proofing-your-business-how-documenting-processes-today-prepares-you-for-the-age-of-ai-agents.txt",
+      "chars": 7205,
+      "sha256": "320554fe839aed9bfd32e1ed7d41f3e828d9faba33444fe708186daba9f603ad"
+    },
+    {
+      "url": "https://www.cadreai.com/articles/future-proofing-your-business-how-documenting-processes-today-prepares-you-for-the-age-of-ai-agents-2",
+      "slug": "articles__future-proofing-your-business-how-documenting-processes-today-prepares-you-for-the-age-of-ai-agents-2",
+      "file": "articles__future-proofing-your-business-how-documenting-processes-today-prepares-you-for-the-age-of-ai-agents-2.txt",
+      "chars": 7264,
+      "sha256": "ad60174d76045948c34d64435ef7c61f11396d053c173ec4e8198262cd901df4"
+    },
+    {
+      "url": "https://www.cadreai.com/articles/how-to-start-with-ai-a-beginners-guide-for-businesses",
+      "slug": "articles__how-to-start-with-ai-a-beginners-guide-for-businesses",
+      "file": "articles__how-to-start-with-ai-a-beginners-guide-for-businesses.txt",
+      "chars": 5382,
+      "sha256": "a5a5b3cecac50ae8e856db6fb5a69ddfbde402fc437d6d8f4d5d7670ec552598"
+    },
+    {
+      "url": "https://www.cadreai.com/articles/the-ai-strategy-ceos-actually-need-but-most-arent-hearing",
+      "slug": "articles__the-ai-strategy-ceos-actually-need-but-most-arent-hearing",
+      "file": "articles__the-ai-strategy-ceos-actually-need-but-most-arent-hearing.txt",
+      "chars": 4861,
+      "sha256": "e283fa2ea4f1533718a5d27ca5c2b0dadb100fead33a99b767c9644a4ec5548c"
+    },
+    {
+      "url": "https://www.cadreai.com/articles/the-ceos-ai-decision-why-buy-first-is-the-smartest-path-to-ai-roi",
+      "slug": "articles__the-ceos-ai-decision-why-buy-first-is-the-smartest-path-to-ai-roi",
+      "file": "articles__the-ceos-ai-decision-why-buy-first-is-the-smartest-path-to-ai-roi.txt",
+      "chars": 6701,
+      "sha256": "d9caa4ca68929d19646b76db450c4322cbe2315fba2536ee53b3ba3e148ca08b"
+    },
+    {
+      "url": "https://www.cadreai.com/articles/the-competitive-edge-how-ai-can-future-proof-your-business",
+      "slug": "articles__the-competitive-edge-how-ai-can-future-proof-your-business",
+      "file": "articles__the-competitive-edge-how-ai-can-future-proof-your-business.txt",
+      "chars": 5664,
+      "sha256": "855468bd8b465556bef1b66d8b6bbf4708bd220fbe4631d70ba5578f223fa7b5"
+    },
+    {
+      "url": "https://www.cadreai.com/articles/the-future-of-work-building-an-ai-enabled-team",
+      "slug": "articles__the-future-of-work-building-an-ai-enabled-team",
+      "file": "articles__the-future-of-work-building-an-ai-enabled-team.txt",
+      "chars": 5526,
+      "sha256": "9ee1454e1e115d27153aa76400403f76b8d98b8b111e71eab3177d9c80576ba5"
+    },
+    {
+      "url": "https://www.cadreai.com/articles/the-state-of-ai-in-business-why-72-of-companies-are-investing-in-ai",
+      "slug": "articles__the-state-of-ai-in-business-why-72-of-companies-are-investing-in-ai",
+      "file": "articles__the-state-of-ai-in-business-why-72-of-companies-are-investing-in-ai.txt",
+      "chars": 6767,
+      "sha256": "fe7eac6f0d76d1d44df601f515ed5113f7cdfac588cfe179a81e7c05dbd7af18"
+    },
+    {
+      "url": "https://www.cadreai.com/articles/the-top-5-ways-to-use-ai-for-prospecting-and-sales-automation-without-killing-trust",
+      "slug": "articles__the-top-5-ways-to-use-ai-for-prospecting-and-sales-automation-without-killing-trust",
+      "file": "articles__the-top-5-ways-to-use-ai-for-prospecting-and-sales-automation-without-killing-trust.txt",
+      "chars": 5094,
+      "sha256": "4a32db47b8d8b007e07e0aac86b57c0bc2ed9b843bc849dbbf656df832be2a18"
+    },
+    {
+      "url": "https://www.cadreai.com/articles/top-5-ways-to-get-the-most-out-of-ai-notetakers",
+      "slug": "articles__top-5-ways-to-get-the-most-out-of-ai-notetakers",
+      "file": "articles__top-5-ways-to-get-the-most-out-of-ai-notetakers.txt",
+      "chars": 7382,
+      "sha256": "9e554f3e0a854ce0fb01ead65777d1269ec7760d814c815622efab39af9e7de4"
+    },
+    {
+      "url": "https://www.cadreai.com/articles/unlocking-roi-with-ai-the-3-step-formula-for-measurable-results",
+      "slug": "articles__unlocking-roi-with-ai-the-3-step-formula-for-measurable-results",
+      "file": "articles__unlocking-roi-with-ai-the-3-step-formula-for-measurable-results.txt",
+      "chars": 5547,
+      "sha256": "f6663c3547dc60f5f7a867f7464d13c83aa1f1e46eaca37701dfc4f7523d24a4"
+    },
+    {
+      "url": "https://www.cadreai.com/articles/validate-ai-implementation-production",
+      "slug": "articles__validate-ai-implementation-production",
+      "file": "articles__validate-ai-implementation-production.txt",
+      "chars": 10386,
+      "sha256": "a7635d40660c9945855a244a959aebdef38bdb5294794b66d04c0b26b2a824b0"
+    },
+    {
+      "url": "https://www.cadreai.com/articles/why-every-great-ai-strategy-starts-with-a-roadmap--not-a-tool",
+      "slug": "articles__why-every-great-ai-strategy-starts-with-a-roadmap--not-a-tool",
+      "file": "articles__why-every-great-ai-strategy-starts-with-a-roadmap--not-a-tool.txt",
+      "chars": 6441,
+      "sha256": "178c01ea73ad6ad0f4fccd5e91c26364940b97d07cf62b076affcc57e88ef951"
+    },
+    {
+      "url": "https://www.cadreai.com/articles/why-hiring-an-ai-strategy-and-integration-firm-is-the-smartest-move-for-your-business",
+      "slug": "articles__why-hiring-an-ai-strategy-and-integration-firm-is-the-smartest-move-for-your-business",
+      "file": "articles__why-hiring-an-ai-strategy-and-integration-firm-is-the-smartest-move-for-your-business.txt",
+      "chars": 13167,
+      "sha256": "58ec35a7c2248d885c6727cfe1ac034aa5b9893bd738975b202b195c99c5b143"
+    },
+    {
+      "url": "https://www.cadreai.com/articles/why-hiring-in-house-ai-talent-will-fail",
+      "slug": "articles__why-hiring-in-house-ai-talent-will-fail",
+      "file": "articles__why-hiring-in-house-ai-talent-will-fail.txt",
+      "chars": 9660,
+      "sha256": "7884dde1360484f665b8306d13ef41da223973f59f762e4b8b7853ddb8fc7a4e"
+    },
+    {
+      "url": "https://www.cadreai.com/articles/why-most-ai-initiatives-fail-and-how-to-avoid-common-pitfalls",
+      "slug": "articles__why-most-ai-initiatives-fail-and-how-to-avoid-common-pitfalls",
+      "file": "articles__why-most-ai-initiatives-fail-and-how-to-avoid-common-pitfalls.txt",
+      "chars": 5183,
+      "sha256": "d4294d3cd2f8869d3cf1274794ab005aec5e2c39825742504696c344b6397e68"
+    },
+    {
+      "url": "https://www.cadreai.com/articles/your-systems-are-not-ready-for-ai",
+      "slug": "articles__your-systems-are-not-ready-for-ai",
+      "file": "articles__your-systems-are-not-ready-for-ai.txt",
+      "chars": 21795,
+      "sha256": "046f49d68c9f7a4a0405a93b55c51938460040c1d401f59614b7589be73d225c"
+    },
+    {
+      "url": "https://www.cadreai.com/authors",
+      "slug": "authors",
+      "file": "authors.txt",
+      "chars": 1128,
+      "sha256": "61f6da330562c302597a781457c0faa9695b52e31c37a36bab4e7b7c621b2c31"
+    },
+    {
+      "url": "https://www.cadreai.com/authors/ben-shapiro",
+      "slug": "authors__ben-shapiro",
+      "file": "authors__ben-shapiro.txt",
+      "chars": 1482,
+      "sha256": "a3de391d9db2faa1ffa774723e3dbf0c05414232997678acd0a700e5760f15e5"
+    },
+    {
+      "url": "https://www.cadreai.com/authors/chad-lohrli",
+      "slug": "authors__chad-lohrli",
+      "file": "authors__chad-lohrli.txt",
+      "chars": 1215,
+      "sha256": "ca1d9c45d832945ceb419e98c32479cd8852c80ab7aa59bcec9ef0413c9e9c88"
+    },
+    {
+      "url": "https://www.cadreai.com/authors/grayson-lafrenz",
+      "slug": "authors__grayson-lafrenz",
+      "file": "authors__grayson-lafrenz.txt",
+      "chars": 2425,
+      "sha256": "045965b89fc10945f5cdb9dd0d8293c1260d508bd6c0efd62df3bb96c4cfb571"
+    },
+    {
+      "url": "https://www.cadreai.com/authors/katie-boes",
+      "slug": "authors__katie-boes",
+      "file": "authors__katie-boes.txt",
+      "chars": 1268,
+      "sha256": "0371823e514166646a45eee892d0b76907e7b5ea5e0a707be36f64ecb2a80711"
+    },
+    {
+      "url": "https://www.cadreai.com/authors/keith-jensen",
+      "slug": "authors__keith-jensen",
+      "file": "authors__keith-jensen.txt",
+      "chars": 1611,
+      "sha256": "02adb9e2ac60b8069bfc23730234bf981bd49f546f53b16ca3aa92a24a2b87cb"
+    },
+    {
+      "url": "https://www.cadreai.com/authors/nicole-kelley",
+      "slug": "authors__nicole-kelley",
+      "file": "authors__nicole-kelley.txt",
+      "chars": 1278,
+      "sha256": "9a34282ccbfb406389db22b6ded871a47f4af99504fa42db5f9f2a810cb6900b"
+    },
+    {
+      "url": "https://www.cadreai.com/authors/riley-stricklin",
+      "slug": "authors__riley-stricklin",
+      "file": "authors__riley-stricklin.txt",
+      "chars": 2801,
+      "sha256": "ad303edf8e09c23e39d542d610aa64deba7945b9a5b2fd29d638ccd16ef74023"
+    },
+    {
+      "url": "https://www.cadreai.com/authors/sarah-mcloughlin",
+      "slug": "authors__sarah-mcloughlin",
+      "file": "authors__sarah-mcloughlin.txt",
+      "chars": 1570,
+      "sha256": "8a0c1039c73d8a8b160414064da3a8219fa9e16473613d40a740ed23bb87c89f"
+    },
+    {
+      "url": "https://www.cadreai.com/careers",
+      "slug": "careers",
+      "file": "careers.txt",
+      "chars": 4070,
+      "sha256": "dc3b08960d8bc6766057c98d1c8a56c24c782dd5c8ed3d3cf9f446073cd1baa4"
+    },
+    {
+      "url": "https://www.cadreai.com/careers/assessments/fde-assessment",
+      "slug": "careers__assessments__fde-assessment",
+      "file": "careers__assessments__fde-assessment.txt",
+      "chars": 7540,
+      "sha256": "59c45d32c15afbdbba6c5b1f3ddfb68a9e1b39356e9b1c42201a07c3777a489d"
+    },
+    {
+      "url": "https://www.cadreai.com/case-studies",
+      "slug": "case-studies",
+      "file": "case-studies.txt",
+      "chars": 9043,
+      "sha256": "4d1236eea3813f9af99a3c72245d21020820205e5753e6c5ab22740e774e6c09"
+    },
+    {
+      "url": "https://www.cadreai.com/contact",
+      "slug": "contact",
+      "file": "contact.txt",
+      "chars": 3085,
+      "sha256": "916567a20d0ebe79527d33251e41b5f75edcee3cb866b703c9b1b1f8a559a7e6"
+    },
+    {
+      "url": "https://www.cadreai.com/departments",
+      "slug": "departments",
+      "file": "departments.txt",
+      "chars": 3145,
+      "sha256": "ffee47800952cc48bffb2dd52b53b26b991e81db521232633ecd1c23b4c5eb30"
+    },
+    {
+      "url": "https://www.cadreai.com/departments/customer-success",
+      "slug": "departments__customer-success",
+      "file": "departments__customer-success.txt",
+      "chars": 8155,
+      "sha256": "949935cc0aeef2931a031f3276e2248ac901125537a8e0c9a8855254d08ad85b"
+    },
+    {
+      "url": "https://www.cadreai.com/departments/executive-leadership",
+      "slug": "departments__executive-leadership",
+      "file": "departments__executive-leadership.txt",
+      "chars": 4762,
+      "sha256": "d4aacd732a8b93f5e215017bafa97f4301bbbd2e1baa8829caf7281444a45928"
+    },
+    {
+      "url": "https://www.cadreai.com/departments/finance",
+      "slug": "departments__finance",
+      "file": "departments__finance.txt",
+      "chars": 9660,
+      "sha256": "27f6794c39d0f8a864fd4138656d6273cf2b59e94d414add201d1949e5775128"
+    },
+    {
+      "url": "https://www.cadreai.com/departments/legal",
+      "slug": "departments__legal",
+      "file": "departments__legal.txt",
+      "chars": 4115,
+      "sha256": "e875dec609da8be862fe316b9bcb44a9552fc29c49e9ddd7af4222cd6b375b92"
+    },
+    {
+      "url": "https://www.cadreai.com/departments/marketing",
+      "slug": "departments__marketing",
+      "file": "departments__marketing.txt",
+      "chars": 11087,
+      "sha256": "78d64575253590e95ad3082fbbadfb4e7993cb8b586df37c392f5744f33decfb"
+    },
+    {
+      "url": "https://www.cadreai.com/departments/operations",
+      "slug": "departments__operations",
+      "file": "departments__operations.txt",
+      "chars": 36110,
+      "sha256": "19db5a22c6790572627a7cff38a202774c6572a1c8def3992e7f0b4c5f62af2b"
+    },
+    {
+      "url": "https://www.cadreai.com/departments/sales",
+      "slug": "departments__sales",
+      "file": "departments__sales.txt",
+      "chars": 18613,
+      "sha256": "927137f822c914369df92cdbae5aa9429bae62389298b1637b2d37af8d784d9d"
+    },
+    {
+      "url": "https://www.cadreai.com/departments/technology",
+      "slug": "departments__technology",
+      "file": "departments__technology.txt",
+      "chars": 8478,
+      "sha256": "d8b2210f6b3ed10850ea74b6daf28b74c10e46ecea70461117937076cd541778"
+    },
+    {
+      "url": "https://www.cadreai.com/events",
+      "slug": "events",
+      "file": "events.txt",
+      "chars": 4938,
+      "sha256": "555e10b706cd58db1c68c72f48dfad9aec0bd23222ede90e2d3d387b82ae7ffe"
+    },
+    {
+      "url": "https://www.cadreai.com/events/ai-leadership-workshop",
+      "slug": "events__ai-leadership-workshop",
+      "file": "events__ai-leadership-workshop.txt",
+      "chars": 3767,
+      "sha256": "00ff37a557bb5ec534be480cf5b57e0fa0766145159d1992b0aa911cfd1b9371"
+    },
+    {
+      "url": "https://www.cadreai.com/events/pe-ai-value-creation-playbook",
+      "slug": "events__pe-ai-value-creation-playbook",
+      "file": "events__pe-ai-value-creation-playbook.txt",
+      "chars": 5993,
+      "sha256": "0e6dcc5a250e1e7fa702cbdfac4c2de4cc3e4d1853ae7667c300c7464d279ce3"
+    },
+    {
+      "url": "https://www.cadreai.com/events/the-executive-ai-conversation",
+      "slug": "events__the-executive-ai-conversation",
+      "file": "events__the-executive-ai-conversation.txt",
+      "chars": 6105,
+      "sha256": "b07062e143001cd9d221c010f3c26289243b9945d46486bb6702e4894cf1e3e9"
+    },
+    {
+      "url": "https://www.cadreai.com/eventsold",
+      "slug": "eventsold",
+      "file": "eventsold.txt",
+      "chars": 1223,
+      "sha256": "59ce6d20e4db0f111dc278f46defbcc2e6ec4d5ec81a8ebd2b4dfa002006deda"
+    },
+    {
+      "url": "https://www.cadreai.com/industries",
+      "slug": "industries",
+      "file": "industries.txt",
+      "chars": 3546,
+      "sha256": "3768c53bd05f642270a436b35f94b8ca188c4a831573c5e832e6c474e9aba256"
+    },
+    {
+      "url": "https://www.cadreai.com/industries/construction",
+      "slug": "industries__construction",
+      "file": "industries__construction.txt",
+      "chars": 4904,
+      "sha256": "7b57586b02622f7199bbebf5252afd5b12858ac760a4f6d95a8938aac16606a8"
+    },
+    {
+      "url": "https://www.cadreai.com/industries/financial-services",
+      "slug": "industries__financial-services",
+      "file": "industries__financial-services.txt",
+      "chars": 5461,
+      "sha256": "c0244a6cb92e9cb7404a9f1ae222eeb0c7c4f2396e1c00a56bcaab5b4ca0a1b2"
+    },
+    {
+      "url": "https://www.cadreai.com/industries/hospitality",
+      "slug": "industries__hospitality",
+      "file": "industries__hospitality.txt",
+      "chars": 4955,
+      "sha256": "2f6c510eceacbca746478bb3c48348f7d953ea245245ca119e7ed16272a94621"
+    },
+    {
+      "url": "https://www.cadreai.com/industries/manufacturing-logistics",
+      "slug": "industries__manufacturing-logistics",
+      "file": "industries__manufacturing-logistics.txt",
+      "chars": 5174,
+      "sha256": "3e23978f18a46795cc43d7b9d74702d281e877433a7dc140a36308951ca5d59d"
+    },
+    {
+      "url": "https://www.cadreai.com/industries/mortgage-lending",
+      "slug": "industries__mortgage-lending",
+      "file": "industries__mortgage-lending.txt",
+      "chars": 4941,
+      "sha256": "a22ec9284cedba4356726a8c873d4d91daa0aeabb8c54c3963f56d795794dabf"
+    },
+    {
+      "url": "https://www.cadreai.com/industries/private-equity",
+      "slug": "industries__private-equity",
+      "file": "industries__private-equity.txt",
+      "chars": 43492,
+      "sha256": "d5e6eb5e7f915cf721942c3a5ded859f1800cafd10250898094ce85976259519"
+    },
+    {
+      "url": "https://www.cadreai.com/industries/professional-services",
+      "slug": "industries__professional-services",
+      "file": "industries__professional-services.txt",
+      "chars": 5485,
+      "sha256": "1a9be1b3b1676622d9aa0278d877273b255623bc36fbd918bc482684f4d2e9ef"
+    },
+    {
+      "url": "https://www.cadreai.com/industries/real-estate",
+      "slug": "industries__real-estate",
+      "file": "industries__real-estate.txt",
+      "chars": 4866,
+      "sha256": "80c15b13e533b2a1121df39394655b7634c23212f7e9188124c1b12375925db2"
+    },
+    {
+      "url": "https://www.cadreai.com/industries/retail-e-commerce",
+      "slug": "industries__retail-e-commerce",
+      "file": "industries__retail-e-commerce.txt",
+      "chars": 4950,
+      "sha256": "87d06aa362b36a3c0b610a525500115587a77e4dff8826adfa2ac09e2c7dc847"
+    },
+    {
+      "url": "https://www.cadreai.com/leadership-facilitation",
+      "slug": "leadership-facilitation",
+      "file": "leadership-facilitation.txt",
+      "chars": 4790,
+      "sha256": "33f28090a77595535d4db034445df14f0a6e832ca502f54771571b6e349d7bb1"
+    },
+    {
+      "url": "https://www.cadreai.com/legal/cookie-declaration",
+      "slug": "legal__cookie-declaration",
+      "file": "legal__cookie-declaration.txt",
+      "chars": 3459,
+      "sha256": "609a6cd8a97a1569575b22405b34ef482067834098f1404f7220d76cd6b425d1"
+    },
+    {
+      "url": "https://www.cadreai.com/legal/cookie-policy",
+      "slug": "legal__cookie-policy",
+      "file": "legal__cookie-policy.txt",
+      "chars": 5503,
+      "sha256": "78f1bb8a45beb4cf64fe820c9e0885f81b2787b045446a04ab718bd9e101636f"
+    },
+    {
+      "url": "https://www.cadreai.com/legal/privacy-policy",
+      "slug": "legal__privacy-policy",
+      "file": "legal__privacy-policy.txt",
+      "chars": 5073,
+      "sha256": "161693c52259481da5b7e273dd91c0316f771a6d1a1dec4302bd656283090abb"
+    },
+    {
+      "url": "https://www.cadreai.com/legal/privacy-rights",
+      "slug": "legal__privacy-rights",
+      "file": "legal__privacy-rights.txt",
+      "chars": 1898,
+      "sha256": "a67a2fa91b6beb1f35a238ba7bf7c03ddaf86e2ca4fcf7a7255bf0b7e3c3df8c"
+    },
+    {
+      "url": "https://www.cadreai.com/next-generation-education",
+      "slug": "next-generation-education",
+      "file": "next-generation-education.txt",
+      "chars": 6403,
+      "sha256": "4d765993f43ab6c710fa7d8322db543e8c867a7ea19a8c269d36f0c008ca62f4"
+    },
+    {
+      "url": "https://www.cadreai.com/podcasts/assembled-ai",
+      "slug": "podcasts__assembled-ai",
+      "file": "podcasts__assembled-ai.txt",
+      "chars": 43742,
+      "sha256": "c2d5c453c7afaad3494bc8f9d690a3f2cf0b5802d643504e9362cd0705f74b23"
+    },
+    {
+      "url": "https://www.cadreai.com/podcasts/augment-code",
+      "slug": "podcasts__augment-code",
+      "file": "podcasts__augment-code.txt",
+      "chars": 35657,
+      "sha256": "adca49df21d157c75d9c362f0a669f506b91d534f32686284a764e8df00d20f3"
+    },
+    {
+      "url": "https://www.cadreai.com/podcasts/cadre-ai",
+      "slug": "podcasts__cadre-ai",
+      "file": "podcasts__cadre-ai.txt",
+      "chars": 50205,
+      "sha256": "40acde89fe60164c81c070cd56fb85c741c32cef90d7c1d3cd26991fe1b4107d"
+    },
+    {
+      "url": "https://www.cadreai.com/podcasts/canva",
+      "slug": "podcasts__canva",
+      "file": "podcasts__canva.txt",
+      "chars": 45813,
+      "sha256": "b750f71238f4fade4a8739f258efe609fa6a67eb73c0a288b0ef66b84edb2039"
+    },
+    {
+      "url": "https://www.cadreai.com/podcasts/clickup",
+      "slug": "podcasts__clickup",
+      "file": "podcasts__clickup.txt",
+      "chars": 36879,
+      "sha256": "9e93d2e3a729e61ad832acb2441c7b9ac5383034ae759fc49bc228559d9d2e69"
+    },
+    {
+      "url": "https://www.cadreai.com/podcasts/corraldata",
+      "slug": "podcasts__corraldata",
+      "file": "podcasts__corraldata.txt",
+      "chars": 37242,
+      "sha256": "4a1ce40a3b160b69568095b384b60d3d533b147b18fe884fbc231984386d30dd"
+    },
+    {
+      "url": "https://www.cadreai.com/podcasts/datawizz",
+      "slug": "podcasts__datawizz",
+      "file": "podcasts__datawizz.txt",
+      "chars": 41046,
+      "sha256": "f839aae01a99227d013cb3aa6dd057455f81b0959794d560e37a4c4438c06356"
+    },
+    {
+      "url": "https://www.cadreai.com/podcasts/engine",
+      "slug": "podcasts__engine",
+      "file": "podcasts__engine.txt",
+      "chars": 35082,
+      "sha256": "24e081b9e391629ab92c4d79aa6fac56dc3e9b25e8ecdb08eb69dfb81408e929"
+    },
+    {
+      "url": "https://www.cadreai.com/podcasts/francois",
+      "slug": "podcasts__francois",
+      "file": "podcasts__francois.txt",
+      "chars": 47186,
+      "sha256": "fde2443629fed874cdc2e7cf2a8873f2c31728bb4edef815360431f9976321ce"
+    },
+    {
+      "url": "https://www.cadreai.com/podcasts/hello-sky",
+      "slug": "podcasts__hello-sky",
+      "file": "podcasts__hello-sky.txt",
+      "chars": 44538,
+      "sha256": "e14418883548eb4d024d7247f325e8e2b5ce259ff9f611f57cc23fda3527328f"
+    },
+    {
+      "url": "https://www.cadreai.com/podcasts/inflow",
+      "slug": "podcasts__inflow",
+      "file": "podcasts__inflow.txt",
+      "chars": 23686,
+      "sha256": "c843f865c8e24990ab42d575043b0549d5e7aa660a91ff5644718a36db6f9a6f"
+    },
+    {
+      "url": "https://www.cadreai.com/podcasts/invivoscribe",
+      "slug": "podcasts__invivoscribe",
+      "file": "podcasts__invivoscribe.txt",
+      "chars": 33327,
+      "sha256": "905d050ef16575eeacb802ca293394e3c3b996b3a4d4a7cd0b32e96c8a79402c"
+    },
+    {
+      "url": "https://www.cadreai.com/podcasts/juicebox",
+      "slug": "podcasts__juicebox",
+      "file": "podcasts__juicebox.txt",
+      "chars": 39459,
+      "sha256": "eb5048fcc13cf791452f4c2aed8c4e453e54d35f81b8bc01d61761949b5ab4ec"
+    },
+    {
+      "url": "https://www.cadreai.com/podcasts/koah-labs",
+      "slug": "podcasts__koah-labs",
+      "file": "podcasts__koah-labs.txt",
+      "chars": 42172,
+      "sha256": "ad8f1829699eecbb3f53c59440c03ddd106f90d94c5d7f8e33362ee673cc5dea"
+    },
+    {
+      "url": "https://www.cadreai.com/podcasts/kognitos",
+      "slug": "podcasts__kognitos",
+      "file": "podcasts__kognitos.txt",
+      "chars": 24725,
+      "sha256": "e4ec6d33eaab566e8e13ee6fef23f933e531b1a36b3079f04fc6b5e17ddde2a3"
+    },
+    {
+      "url": "https://www.cadreai.com/podcasts/los-cuernos-wine",
+      "slug": "podcasts__los-cuernos-wine",
+      "file": "podcasts__los-cuernos-wine.txt",
+      "chars": 36594,
+      "sha256": "6795b960d0a887f64a1febc087b4d1b4cbadd1184946027d891f8f9e6b6331fc"
+    },
+    {
+      "url": "https://www.cadreai.com/podcasts/merge",
+      "slug": "podcasts__merge",
+      "file": "podcasts__merge.txt",
+      "chars": 37275,
+      "sha256": "7c63a921471a56f01a8616a7b968e82cfad7665efc9c1978e279b445a82d90f8"
+    },
+    {
+      "url": "https://www.cadreai.com/podcasts/mindstudio",
+      "slug": "podcasts__mindstudio",
+      "file": "podcasts__mindstudio.txt",
+      "chars": 59858,
+      "sha256": "24375ea6ac567e90e0cc2bdf8c86df5452e13a916fd107711558264a661bbffa"
+    },
+    {
+      "url": "https://www.cadreai.com/podcasts/mutesix",
+      "slug": "podcasts__mutesix",
+      "file": "podcasts__mutesix.txt",
+      "chars": 60930,
+      "sha256": "7d5f9189e32172fef2c592a443ef3a0af2930e6697e11f45f81671c7e0e0376b"
+    },
+    {
+      "url": "https://www.cadreai.com/podcasts/rising-tide-partners",
+      "slug": "podcasts__rising-tide-partners",
+      "file": "podcasts__rising-tide-partners.txt",
+      "chars": 29610,
+      "sha256": "fb083da36a397645196ad0ba8dfc54daf46c3ab43a3c20c645f2490c9bf30d70"
+    },
+    {
+      "url": "https://www.cadreai.com/podcasts/slow-ventures",
+      "slug": "podcasts__slow-ventures",
+      "file": "podcasts__slow-ventures.txt",
+      "chars": 32524,
+      "sha256": "8414f8d8e8e02169f6891992ca9fa3856bbe505449508dfdc3a1da33df37e716"
+    },
+    {
+      "url": "https://www.cadreai.com/podcasts/spot-ai",
+      "slug": "podcasts__spot-ai",
+      "file": "podcasts__spot-ai.txt",
+      "chars": 30841,
+      "sha256": "5ee3b9c0a4e27a3b0af0d00f402a3fd92deab7bb5939c01b7af4fd961fe613cf"
+    },
+    {
+      "url": "https://www.cadreai.com/podcasts/tateeda",
+      "slug": "podcasts__tateeda",
+      "file": "podcasts__tateeda.txt",
+      "chars": 28531,
+      "sha256": "60a6e53382cf502f1d508d34465b2b761e0780852ea25fdf5eb3901c755e7ffe"
+    },
+    {
+      "url": "https://www.cadreai.com/podcasts/true-ventures",
+      "slug": "podcasts__true-ventures",
+      "file": "podcasts__true-ventures.txt",
+      "chars": 64149,
+      "sha256": "ce4032e6e7f1fdd83305a0c51fce8a59fccbd28e127074d9c139db09518bd088"
+    },
+    {
+      "url": "https://www.cadreai.com/podcasts/tzp-group",
+      "slug": "podcasts__tzp-group",
+      "file": "podcasts__tzp-group.txt",
+      "chars": 54914,
+      "sha256": "1ac9b6ff78e5f1d95e2cfd7da705fbdafb2b1f384b4e94629946a41859ceb9ee"
+    },
+    {
+      "url": "https://www.cadreai.com/podcasts/vectara",
+      "slug": "podcasts__vectara",
+      "file": "podcasts__vectara.txt",
+      "chars": 37757,
+      "sha256": "38e8c3e0ee617acef3d02909e0de0fbade0626a926b05886de872b7109129d0a"
+    },
+    {
+      "url": "https://www.cadreai.com/scroller-test-page",
+      "slug": "scroller-test-page",
+      "file": "scroller-test-page.txt",
+      "chars": 2902,
+      "sha256": "47f605ba39f50190f822d37a21d1586ea61795235170f20cbeb55a3eea954e5a"
+    },
+    {
+      "url": "https://www.cadreai.com/strategy",
+      "slug": "strategy",
+      "file": "strategy.txt",
+      "chars": 21677,
+      "sha256": "0e4be8f7c4a3e9bbf86d328ce5b409200cde74aaad441a2392ebbaea302355f8"
+    },
+    {
+      "url": "https://www.cadreai.com/terms-of-service",
+      "slug": "terms-of-service",
+      "file": "terms-of-service.txt",
+      "chars": 37476,
+      "sha256": "480834df7ef254e427337de5dda5a010b4b92f91957113c18689b2a428900894"
+    }
+  ]
+}

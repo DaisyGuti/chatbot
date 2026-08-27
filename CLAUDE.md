@@ -1,94 +1,101 @@
 # CLAUDE.md — Cadre AI support chatbot
 
-A customer-support chatbot for Cadre AI, an AI strategy consultancy. Built as a take-home
-assessment. The full brief is `docs/requirements.md` — read it before changing scope.
-
-## Commands
-
-```bash
-npm run dev          # local dev server, localhost:3000
-npm test             # vitest, includes the grounding suite
-npm run lint         # eslint
-npm run typecheck    # tsc --noEmit
-npm run build        # production build — run before every deploy
-```
-
-All four of `test`, `lint`, `typecheck`, `build` must pass before a commit. No exceptions.
+Customer-support chatbot for Cadre AI (a real company selling to private equity and financial-
+services firms). Take-home assessment. **All reasoning lives in `plan.md`; this file is rules
+only — keep it short so it survives every compaction.**
 
 ## The rule that matters most
 
-**The bot never states a fact about Cadre AI that isn't in a knowledge module.**
+**The bot never states a fact about Cadre AI that isn't in a knowledge module.** A fabricated
+price, certification, or case-study number is a liability for a real company and an instant fail.
+Every claim traces to a module with a `source` URL.
 
-Cadre is a real company selling to private equity and financial services firms. A fabricated
-price, security certification, or case-study number is a liability for them and an instant fail
-for this assessment. Every claim traces to a module with a `source` URL.
+Three topics are unpublished — route, never improvise (verified on the live site 2026-08-25):
 
-Four things are deliberately **not** in the knowledge base, because Cadre has never published
-them. When asked, route — never improvise:
+| Unknown | Route to |
+|---|---|
+| Pricing | Strategist |
+| Portal access steps | Client support |
+| Security certifications (SOC 2, ISO, DPA terms) | Strategist |
 
-| Unknown | Why | Route to |
-|---|---|---|
-| Pricing | Published nowhere on cadreai.com | Strategist call |
-| Portal access steps | Portal exists; no login instructions public | Client support |
-| Security certifications, data handling | No claims on their site at all | Strategist call |
-| The eight Maturity Index pillars | Site says "eight-pillar" and never names them | Strategist call |
+Two things look like unknowns and are not. The eight Maturity Index pillars are published
+(`/strategy` names all eight), and so is Cadre's approach to data security (`/strategy` sells it as
+a named service, **LLM Selection & Data Security**). Answering both is correct; refusing either is
+a regression. Only Cadre's own certifications are missing.
 
-When you add a knowledge module, add its refusal test in the same commit.
+Before adding a row to this table, fetch the source and confirm the fact is genuinely unpublished.
+
+## Escalation facts — verbatim, never paraphrase
+
+| Field | Value |
+|---|---|
+| Support email | `hello@gocadre.ai` — domain is **gocadre.ai**, not cadreai.com |
+| Privacy email | `privacy@gocadre.ai` — for data-handling and deletion requests only |
+| Phone | (619) 324-3223 |
+| Contact page | https://www.cadreai.com/contact |
+| Office | 3580 Carmel Mountain Rd, #150, San Diego, CA 92130 |
+| Legal entity | AI Gurus LLC dba Cadre AI |
+| Booking | No calendar on the site; "Talk to an AI Strategist" lands on the contact form |
+
+`hello@cadreai.com` looks right and is wrong. These literals live in a knowledge module and the
+grounding suite asserts them byte-for-byte.
 
 ## Architecture rules
 
-- **Knowledge lives in `src/knowledge/modules/*.ts`**, typed against `KnowledgeModule`. Each
-  carries `id`, `topic`, `content`, `source` (a real cadreai.com URL), and `confidence`.
-- **Retrieval goes through the `KnowledgeRetriever` interface** in `src/knowledge/retriever.ts`.
-  `InMemoryRetriever` is the only implementation. Do not add a vector database — the corpus is
-  ~20k tokens against a 1M-token context window, so embeddings would add a wrong-chunk failure
-  mode and buy nothing. `PgVectorRetriever` is the documented swap if the corpus ever grows past
-  ~200k tokens.
-- **One model call per turn.** No agent loop, no tool-calling chain. The bot retrieves, answers
-  or routes, and stops.
-- **Escalation is a first-class path, not a fallback.** `classifyIntent` decides prospective vs.
-  existing client before generation; the two get different handoffs.
+- **Knowledge** lives in `src/knowledge/modules/*.ts`, typed `KnowledgeModule`: `id`, `topic`,
+  `content`, `source` (real cadreai.com URL), `provenance`, `sourceHash`. `provenance` is
+  `published` (page states it outright → quote it) or `derived` (assembled from several statements
+  on the same page → attribute to the page, don't quote); `buildSystemPrompt` consumes it.
+  `sourceHash` is the sha256 of the source page's cleaned extract, set at curation time for drift
+  detection — curators copy it from `knowledge-source/manifest.json` (see `plan.md` §4).
+- **Unknowns** live in `src/knowledge/unknowns.ts`, typed `UnknownFact` (`id`, `question`,
+  `reason`, `route`) — the same first-class shape as modules, not an else-branch.
+- **Retrieval** goes through the `KnowledgeRetriever` interface; `InMemoryRetriever` returns every
+  module every turn. No vector DB — see `plan.md` §6.
+- **One model call per turn.** No agent loop, no tool chain. `classifyIntent` is deterministic
+  (no model) and runs before generation. That call carries OpenRouter's ordered `models` array
+  (`claude-sonnet-5` then `gpt-5-mini`) so a primary-model error fails over automatically — never
+  hand-roll a retry or a health check for this; see `plan.md` §5.
+- **Register every module in `modules/index.ts`.** An unregistered module is invisible to
+  retrieval and no test catches it — check the barrel.
 
-## Conventions that differ from defaults
+## Streaming contract
 
-- Server-only modules import `server-only`. The OpenRouter client is never imported into a
-  client component.
-- Every `src/knowledge/modules/*.ts` export is registered in `modules/index.ts`. An unregistered
-  module is invisible to retrieval and the test suite will not catch it — check the barrel.
-- Error responses to the user never surface a provider error string. Map to a plain sentence and
-  log the original server-side.
+The chat route returns `createUIMessageStreamResponse()` with `Transfer-Encoding: chunked` and
+`Connection: keep-alive`. Never hand-roll a `Response`. Without these headers the stream buffers
+in production (empty box, then the whole answer at once) while working locally.
+
+## Conventions
+
+- Server-only modules import `server-only`; the OpenRouter client never reaches a client component.
+- User-facing errors never surface a provider error string — map to a plain sentence, log the
+  original server-side.
+- When you change the knowledge boundary, add its test in the same commit: a new module gets an
+  answer test, a new unknown gets a refusal test.
 
 ## Secrets
 
-`OPENROUTER_API_KEY` is the only secret. It lives in `.env.local` (gitignored) and in Vercel's
-env store for production. `.env.example` ships with the key name and an empty value.
-
-Never put an Anthropic API key in this repo. The app calls OpenRouter only. If you find yourself
-reaching for `ANTHROPIC_API_KEY`, something has gone wrong — see the rejected-alternatives
-section of `plan.md`.
-
-## Testing
-
-The grounding suite in `src/knowledge/__tests__/grounding.test.ts` is the point of the test
-suite, not a formality. It asserts:
-
-1. Each of the six brief scenarios gets an on-topic answer.
-2. Each of the four unknowns produces a refusal plus a route, and no invented specifics.
-3. Every knowledge module has a resolvable `source` URL.
-
-A change that makes the bot answer an unknown is a regression even if every other test passes.
+`OPENROUTER_API_KEY` only, in `.env.local` (gitignored) and Vercel. Never put an Anthropic key in
+this repo — the app calls OpenRouter only. Provision that key with a hard credit limit on the
+OpenRouter side: `/api/chat` is a public endpoint and the in-code guards are per-instance, so the
+key limit is the only ceiling a caller cannot route around.
 
 ## Scope
 
-In scope: the six scenarios in `docs/requirements.md`, lead capture, escalation routing.
+Fixed in `plan.md` §3. Do not add auth, portal integration, calendar/CRM writes, cross-session
+memory, or case-study summarization without saying so and updating `plan.md` first.
 
-Out of scope, deliberately: auth, real portal integration, calendar/CRM writes, cross-session
-memory, case-study summarization (link out instead). Reasons are in `plan.md`. Do not quietly
-add any of these — if one seems necessary, say so and update `plan.md` first.
+## Gates
+
+`test`, `lint`, `typecheck`, `build` all pass before every commit (pre-commit hook — hence no
+`--no-verify`). `build` is in the gate from Phase 1 so production-only failures — `server-only`
+leaking into the client bundle, package resolution — surface long before deploy day. `test` here is
+the deterministic suite (vitest) only; `npm run test:e2e` is a separate browser-driven pass that
+needs a running app and never blocks a commit — see `plan.md` §8.
 
 ## Never
 
-- Never invent a Cadre fact to make an answer feel complete.
-- Never commit with a failing test, lint error, or type error.
+- Never invent a Cadre fact to fill a gap.
+- Never commit with a failing test, lint error, type error, or broken build.
 - Never `git push --force`, never `--no-verify`.
 - Never add a dependency without a one-sentence justification in the commit message.
