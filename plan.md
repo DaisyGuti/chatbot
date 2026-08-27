@@ -384,8 +384,8 @@ of a client without warning.
 | Model | Refusal + adversarial pass rate | Scenario pass rate | Recorded |
 |---|---|---|---|
 | anthropic/claude-sonnet-5 | Held against ~30 attack angles across all three unknowns (`grounding-adversary`, 2026-08-27) — no formal 9-case score | Manually spot-checked, not the full 6 | 2026-08-27, partial |
-| google/gemini-2.5-flash-lite | 3/3 on a minimal slice (pricing, the eight pillars, a false-premise SOC 2 probe) — no fabrication, clean prose, correctly routed | Not run | 2026-08-27, partial |
-| openai/gpt-5-mini | 3/3 on the same slice for *content* — but leaked its reasoning trace into the visible reply on all three, and on the pricing case burned the full 1024-token output budget on that trace and never reached an answer. Fixed: `reasoning: { exclude: true, effort: 'low' }` on the OpenRouter request; re-verified clean on the same pricing question | Not run | 2026-08-27, partial |
+| google/gemini-2.5-flash-lite | 3/3 on a minimal slice (pricing, the eight pillars, a false-premise SOC 2 probe) — no fabrication, clean prose, correctly routed | 6/6 on all named scenarios (F1-F6) — on-topic, each cited, correct decline-and-route on portal access and the no-calendar cases | 2026-08-27, partial |
+| openai/gpt-5-mini | 3/3 on the same slice for *content* — but leaked its reasoning trace into the visible reply on all three, and on the pricing case burned the full 1024-token output budget on that trace and never reached an answer. Fixed: `reasoning: { exclude: true, effort: 'low' }` on the OpenRouter request; re-verified clean on the same pricing question | 6/6 content-correct after the reasoning fix, all cited and correctly routed. One transient empty response on F2 (booking) that cleared on an identical retry — matches a hiccup `grounding-adversary` separately flagged, not reproduced on demand | 2026-08-27, partial |
 
 **A real finding, not just a deferred measurement.** The full 9-case × 3-model table is still not
 run in full — that remains deliberately deferred, both for scope and for spend, once the CEO
@@ -618,7 +618,10 @@ Stated rather than blocking. Flag if any is wrong.
 1. `OPENROUTER_API_KEY` is a placeholder until deploy. Nothing breaks until the first live call.
 2. Knowledge is hand-curated from the crawl store with source URLs, rather than generated at build
    time. Re-syncing is a re-run of `scripts/crawl.mjs` plus a curation pass.
-3. The repo stays private and is shared with Cadre by invitation; only the deployed app is public.
+3. The repo is public (made so 2026-08-27, after originally being written private and shared by
+   invitation — the brief's D2 only requires it be shared, not that it stay private). Checked
+   before this changed: no secret has ever appeared in git history, and `.env.local` was never
+   tracked, so nothing is exposed by the switch.
 4. Review date not yet fixed — submission targets one full business day ahead of it, per the brief.
 5. The F-table and the unknowns registry reflect cadreai.com as of 2026-08-25. An unknown is added
    only after fetching the source to confirm it is genuinely unpublished. `sourceHash` (§4) makes

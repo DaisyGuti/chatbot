@@ -195,3 +195,21 @@ correctly-routed refusal. Total spend across both follow-ups: **~$0.014** (final
 `plan.md` §5's table and README's Model selection section both updated with this finding rather
 than left generic — a fallback that's clean on *content* but broken on *delivery* is exactly the
 kind of thing the pass-rate framing alone would have hidden.
+
+## Scenario column filled in — the other half of §5's table
+
+The CEO caught that the table's "Scenario pass rate" column was still "Not run" for both
+`gemini-2.5-flash-lite` and `gpt-5-mini` right next to a filled-in "Refusal + adversarial" column —
+easy to misread as a contradiction, but they're genuinely different tests: the first is the
+boundary slice above, the second is the six named scenarios from the brief (F1-F6). Ran all six
+against both models (12 calls). `gemini-2.5-flash-lite`: 6/6, on-topic, cited, correct decline-and-
+route behavior. `gpt-5-mini`: 6/6 content-correct after the reasoning fix, with one transient empty
+response on the booking question (F2) that cleared cleanly on an identical retry — the same class
+of intermittent hiccup `grounding-adversary` flagged separately, not something that reproduced on
+demand, so left as observed rather than chased. `plan.md` §5's table now has both columns real for
+all three models. Total spend after this round: **$0.7621 of $5.**
+
+Also, prompted directly by the CEO: verified no secret has ever appeared anywhere in git history
+before the repo went public (`git log --all -p` grepped for OpenRouter/Vercel key shapes, and for
+any commit ever touching `.env.local` — neither turned anything up). `plan.md`'s assumption that
+the repo stays private is corrected to match reality rather than left stale.

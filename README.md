@@ -153,6 +153,12 @@ ever reaching an answer. A real client hitting the fallback during a Sonnet outa
 that instead of a clean refusal. Fixed with `reasoning: { exclude: true, effort: 'low' }` on the
 OpenRouter request and re-verified clean on the same question.
 
+The six named scenarios from the brief were then run against both models too: `gemini-2.5-flash-lite`
+went 6/6, on-topic and cited throughout. `gpt-5-mini` was content-correct on all six after the
+reasoning fix, with one transient empty response (immediately clean on retry) that matches an
+intermittent hiccup seen once before — not reproduced on demand, so noted rather than chased.
+[`plan.md` §5](plan.md#5-model-selection)'s table has the full breakdown for all three models.
+
 ---
 
 ## Verification
