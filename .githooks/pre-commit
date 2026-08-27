@@ -1,0 +1,8 @@
+#!/bin/sh
+# CLAUDE.md's gate: test, lint, typecheck, build all pass before every commit.
+# No dependency (husky, etc.) — activated once per clone via the "prepare" npm script.
+set -e
+npm run lint
+npm run typecheck
+npm test
+npm run build
