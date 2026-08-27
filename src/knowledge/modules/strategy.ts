@@ -115,9 +115,35 @@ export const strategyLlmSelectionDataSecurity: KnowledgeModule = {
   sourceHash: SOURCE_HASH,
 };
 
+/**
+ * The four services as a coordinate set. `derived`: no single page states "Cadre has four
+ * services" in one sentence — that grouping exists only in the site's footer nav, which
+ * `scripts/crawl.mjs` correctly strips as boilerplate. What's directly verifiable from the crawl
+ * store is the structural fact this module states instead: four separate, dedicated service pages
+ * exist, and none describes AI Agents as part of AI Engineering. Grounds a real gap found by
+ * `grounding-adversary` — asked "what services do you offer," the bot sometimes said three and
+ * folded AI Agents under AI Engineering, which no module supported either way.
+ */
+export const strategyServicesOverview: KnowledgeModule = {
+  id: "strategy-services-overview",
+  topic: "services",
+  content:
+    "Cadre AI publishes four services, each with its own dedicated page: AI Strategy " +
+    "(cadreai.com/strategy), AI Leadership & Facilitation (cadreai.com/leadership-facilitation), " +
+    "AI Engineering (cadreai.com/ai-engineering), and AI Agents (cadreai.com/agents). These are " +
+    "four coordinate offerings, not a hierarchy — AI Agents is its own service with its own page " +
+    "and description, not a sub-offering or component of AI Engineering. A response naming " +
+    "Cadre's services should name all four rather than a subset, and should not describe one as " +
+    "part of another.",
+  source: SOURCE_URL,
+  provenance: "derived",
+  sourceHash: SOURCE_HASH,
+};
+
 export const strategyModules: KnowledgeModule[] = [
   strategyAiStrategyService,
   strategyOpenAiServicePartner,
   strategyMaturityIndexPillars,
   strategyLlmSelectionDataSecurity,
+  strategyServicesOverview,
 ];
