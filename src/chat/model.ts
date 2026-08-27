@@ -25,7 +25,11 @@ export const MAX_OUTPUT_TOKENS = 1024;
  * rotated in the Vercel dashboard takes effect without a redeploy.
  */
 export function chatModel(apiKey: string) {
-  const openrouter = createOpenRouter({ apiKey });
+  // Unset in every real environment (local placeholder and Vercel both leave it out) — exists only
+  // so `mock/openrouter-server.mjs` can stand in for OpenRouter during local UI testing without a
+  // funded key. Setting it is a deliberate, manual opt-in; nothing in this codebase sets it itself.
+  const baseURL = process.env.OPENROUTER_BASE_URL;
+  const openrouter = createOpenRouter(baseURL ? { apiKey, baseURL } : { apiKey });
 
   return openrouter(PRIMARY_MODEL, {
     // Ordered, and the order is the whole point: OpenRouter walks this list itself when the entry
