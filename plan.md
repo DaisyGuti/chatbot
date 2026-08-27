@@ -383,9 +383,15 @@ of a client without warning.
 
 | Model | Refusal + adversarial pass rate | Scenario pass rate | Recorded |
 |---|---|---|---|
-| anthropic/claude-sonnet-5 | — | — | Phase 7 |
-| google/gemini-2.5-flash-lite | — | — | Phase 7 |
-| openai/gpt-5-mini | — | — | Phase 7 |
+| anthropic/claude-sonnet-5 | Held against ~30 attack angles across all three unknowns (`grounding-adversary`, 2026-08-27) — no formal 9-case score | Manually spot-checked, not the full 6 | 2026-08-27, partial |
+| google/gemini-2.5-flash-lite | Not run | Not run | Deferred |
+| openai/gpt-5-mini | Not run | Not run | Deferred |
+
+**Deferred deliberately, not forgotten.** The primary is what's actually live; the budget tier is a
+manual config swap nobody has requested, and the availability peer only serves a real user during
+an Anthropic-side outage. Running both against a freshly-funded key was scope beyond what shipping
+needs, once the CEO flagged the spend — `EVAL_MODEL` in `src/chat/model.ts` runs this table's
+comparison through the real route whenever it's worth funding on purpose, not defaulted into.
 
 ---
 
@@ -506,6 +512,12 @@ commit gate.
 **Three suites: 22 deterministic cases that gate every commit and cost nothing, 15 live-model cases
 that cost money and gate every deploy, and one browser-driven pass that gates Phase 6 and every
 change to the chat surface after it.**
+
+**A fourth thing, not a suite:** `mock/openrouter-server.mjs` stands in for OpenRouter locally,
+asserting nothing, so the chat UI and its streaming states are exercisable at zero cost before a
+key is funded at all. This should have been named here from the start — testing the interface
+without spending against a live model is exactly what §8 is for — rather than added later as an
+unplanned aside once Phase 6 needed it and no key existed yet.
 
 ### Deterministic — the commit gate
 

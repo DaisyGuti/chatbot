@@ -31,6 +31,14 @@ export function chatModel(apiKey: string) {
   const baseURL = process.env.OPENROUTER_BASE_URL;
   const openrouter = createOpenRouter(baseURL ? { apiKey, baseURL } : { apiKey });
 
+  // Unset in every real environment — exists only so `plan.md` §5's three-model comparison table
+  // can be filled in by running the real route (real system prompt, real routing) against a single
+  // named model instead of the primary+fallback pair, without a second call this codebase makes.
+  const evalModel = process.env.EVAL_MODEL;
+  if (evalModel) {
+    return openrouter(evalModel, { models: [evalModel] });
+  }
+
   return openrouter(PRIMARY_MODEL, {
     // Ordered, and the order is the whole point: OpenRouter walks this list itself when the entry
     // ahead errors — rate limit, context-length rejection, moderation flag, provider outage —
