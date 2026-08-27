@@ -15,7 +15,7 @@ intentionally underspecified; scoping is graded.
 - [§5 Model selection](#5-model-selection) — Sonnet 5 for refusal discipline, caching for the price, an availability peer for outages
 - [§6 Rejected alternatives](#6-rejected-alternatives) — no vector DB, no response cache, not Render or Fly
 - [§7 Build order](#7-build-order) — phases 0–7, deploy at 5, cut line at 6
-- [§8 Verification](#8-verification) — 16 deterministic cases, 15 live-model cases, one browser-driven pass
+- [§8 Verification](#8-verification) — 22 deterministic cases, 15 live-model cases, one browser-driven pass
 - [§9 Assumptions](#9-assumptions) — six, stated rather than blocking
 - [§10 Claude Code workflow](#10-claude-code-workflow) — four subagents, one command, parallel curation
 - [Appendix A — the 8 pillars](#appendix-a--the-8-pillars-as-strategy-describes-them) — the maturity-index module's content
@@ -131,7 +131,7 @@ number. What differs is which door the handoff opens and what it carries:
 
 | Intent | Route | The handoff |
 |---|---|---|
-| `prospective` | Strategist | Lead capture first — name, company, industry, need — then a prefilled contact-form link and `hello@gocadre.ai`. The capture is the point: a strategist wants context before the call |
+| `prospective` | Strategist | Lead capture first — name, company, industry, need — then a prefilled `mailto:hello@gocadre.ai` and a `/contact` link. The capture is the point: a strategist wants context before the call |
 | `existing` | Client support | No lead capture. Straight to `hello@gocadre.ai` and (619) 324-3223, with the question restated so the client does not retype it |
 | `unknown` | Ask once, then strategist | One qualifying question — "already working with Cadre, or looking into it?" Still ambiguous, take the strategist route: sending a prospect to support costs a lead; the reverse costs a redirect |
 
@@ -144,8 +144,10 @@ Cutting CRM writes does not cut lead *delivery*; they are separable. The integra
 needs credentials, delivery is minutes and needs neither, so delivery stays in:
 
 - The captured fields build a **prefilled `mailto:hello@gocadre.ai`** the user sends in one click,
-  plus a prefilled `/contact` link for anyone who would rather use the form. The user is the
-  transport.
+  plus a plain `/contact` link for anyone who would rather use the form. Only the `mailto:` is
+  actually prefilled — the live `/contact` form is a client-side Webflow form that doesn't read
+  query parameters, confirmed 2026-08-27, so the link is a destination, not a pre-filled one. The
+  user is the transport either way.
 - The same payload is **logged server-side**, one line per capture, so a lead is demonstrable in
   the review rather than asserted.
 
@@ -248,8 +250,11 @@ compresses a paragraph. `buildSystemPrompt` is the field's consumer, which keeps
 decoration on a type.
 
 `sourceHash` is the sha256 of the *cleaned* extract of `source`, and no curator computes it.
-`scripts/crawl.mjs` walks the sitemap once, strips nav, footer and the sitewide CTA band, and writes
-`knowledge-source/<slug>.txt` plus a `manifest.json` of url → sha256; curators copy the hash across.
+`scripts/crawl.mjs` walks the sitemap once, strips nav and footer, and writes `knowledge-source/<slug>.txt`
+plus a `manifest.json` of url → sha256; curators copy the hash across. The sitewide CTA band is kept
+rather than stripped — it turned out to be the only place the portal fact behind F3 is published
+(found and fixed 2026-08-27: the first cut also stripped that band, and the footer selector had a
+bug of its own that let the real footer nav through instead).
 Curating from that store rather than a summarizing fetch tool is what makes the field mean anything
 — a model's rendering of a page cannot be hashed into something a later job could reproduce — and it
 also makes curation offline, parallel-safe and reviewable.
@@ -498,7 +503,7 @@ commit gate.
 
 ## 8. Verification
 
-**Three suites: 16 deterministic cases that gate every commit and cost nothing, 15 live-model cases
+**Three suites: 22 deterministic cases that gate every commit and cost nothing, 15 live-model cases
 that cost money and gate every deploy, and one browser-driven pass that gates Phase 6 and every
 change to the chat surface after it.**
 
@@ -522,6 +527,18 @@ This is the set Phase 2 exits on, and all of it can pass before `/api/chat` exis
   empty and oversized input are both rejected before the model call; and the OpenRouter request body
   carries `models` as an ordered array with Sonnet first and the availability peer second, so the
   failover is provably wired without waiting for a real outage to prove it
+
+Phase 4 added six more this count originally missed:
+
+- **3 routing tests** — each intent's handoff differs and names only published contact details, and
+  the route instruction reaches the model as a second system message *after* the cache breakpoint,
+  so a changing intent never invalidates the cached knowledge block
+- **3 lead-delivery tests** — the `mailto:` address and its four captured fields, the contact-form
+  link, and the one server-side log line per capture
+
+The classification group also carries the cases a naive per-message classifier fails: stickiness
+across a thread, a hard signal re-locking it in either direction, and signals the assistant itself
+wrote being ignored rather than re-classified.
 
 The barrel test exists because an unregistered module is invisible to retrieval and silent about
 it. The literal test exists because `hello@cadreai.com` is a dead address that looks right.

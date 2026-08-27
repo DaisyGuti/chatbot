@@ -18,12 +18,12 @@ behind every one of those decisions, and `CLAUDE.md` is the rules the build runs
 | Phase | State |
 |---|---|
 | 0 — Planning docs, repo scaffold | **Done** |
-| 1 — Next.js scaffold, running locally | Not started |
-| 2 — Knowledge modules, unknowns registry, retriever | Not started |
-| 3 — Chat API, system prompt, streaming | Not started |
-| 4 — Intent classification, escalation, lead capture | Not started |
-| 5 — Deploy to Vercel | Not started |
-| 6 — UI polish, error states | Not started |
+| 1 — Next.js scaffold, running locally | **Done** |
+| 2 — Knowledge modules, unknowns registry, retriever | **Done** |
+| 3 — Chat API, system prompt, streaming | **Done, pending a live key** — guards, streaming contract, ordered `models[]` and the cache breakpoint all verified against real HTTP; the six scenarios need a real `OPENROUTER_API_KEY` to answer end to end |
+| 4 — Intent classification, escalation, lead capture | **Done, one part pending a live key** — all three routes reach the model as a second system message, and a captured lead was driven end to end in a real browser: the form appears on the prospective route, submits, logs server-side, and renders a `mailto:hello@gocadre.ai` carrying all four fields. What a live key would add is how the model words each handoff; the routing itself is deterministic and tested |
+| 5 — Deploy to Vercel | On hold — testing locally first |
+| 6 — UI polish, error states | **Done, two parts pending a live key** — empty state, accessibility floor (`aria-live`, real labels, focus, contrast, disabled-state announcements), phone-width layout, and provider-failure rendering all verified in a real browser against a local build; the 4-spec Playwright pass (`npm run test:e2e`) is green. What a live key would add: watching a real answer stream and confirming the `models[]` fallback actually routes to `gpt-5-mini` rather than both entries failing alike |
 | 7 — Live eval and red-team against production, cost check | Not started |
 
 Planning was completed before any application code, per the brief's own guidance: *"Plan before
@@ -152,11 +152,20 @@ behind them rather than an argument.
 
 Three suites, because they cost different things and check different layers.
 
-**Deterministic — the commit gate.** No network, no model, no spend. Sixteen cases: five on the
-knowledge boundary (every module registered and resolvable, every unknown routed, no question
-claimed by both), four on prompt assembly including the escalation literals byte-exact, three on
-`classifyIntent`, and four on resilience — provider error, empty input, oversized input, and the
-OpenRouter request carrying its models ordered with the primary first and the fallback second.
+**Deterministic — the commit gate.** No network, no model, no spend. [`plan.md`
+§8](plan.md#8-verification)'s sixteen cases: five on the knowledge boundary (every module registered
+and resolvable, every unknown routed, no question claimed by both), four on prompt assembly
+including the escalation literals byte-exact, three on `classifyIntent`, and four on resilience —
+provider error, empty input, oversized input, and the OpenRouter request carrying its models ordered
+with the primary first and the fallback second.
+
+Phase 4 added six more the plan's count predates: three on the routes (each intent's handoff differs
+and names only published contact details; the route block reaches the model as a second system
+message _after_ the cache breakpoint, so a changing intent cannot invalidate the cached corpus) and
+three on lead delivery (the `mailto:` address and its four fields, the contact-form link, and the
+one server-side log line per capture). The classification group also carries the cases a naive
+per-message classifier fails: stickiness across a thread, a hard signal re-locking it in either
+direction, and signals the assistant wrote being ignored.
 
 **Live-model eval — by hand, and before every deploy.** Fifteen cases against the real model: the
 six scenarios, three refusals, one anti-refusal, and five adversarial prompts — direct injection,
@@ -180,8 +189,8 @@ declining the eight pillars, which are published.
 
 ## Running locally
 
-> Not yet applicable — the app is scaffolded in Phase 1. These are the commands `CLAUDE.md`
-> commits to.
+Node 22. `npm run dev` serves without a key — `/api/chat` needs one, and answers with a plain
+error sentence until `OPENROUTER_API_KEY` is set.
 
 ```bash
 npm install
