@@ -29,8 +29,11 @@ for: a dependency where something in the stack would do, an abstraction with one
 that could be derived, scope that `plan.md` already cut.
 
 If a meaningfully simpler path exists, show a two-row trade-off and recommend one. **Stop and
-ask** if it changes what gets built, or if the work reopens a `plan.md` scope decision — that's
-the CEO's call. Don't stop for mechanism: file layout, test structure, helper naming.
+ask** if it changes what gets built, if the work reopens a `plan.md` scope decision, or if you'd
+reverse a technology choice `plan.md` made with a stated reason (§5's model pick, §6's rejected
+alternatives) — those are the CEO's call. For that last case, name what's changed since the
+reasoning was written — pricing, availability, a new constraint — not a style preference, or it
+isn't worth raising. Don't stop for mechanism: file layout, test structure, helper naming.
 
 ## 3. Build the smallest thing that fully does the job
 
@@ -40,6 +43,10 @@ between your own functions. TypeScript strict; no `any` without a one-line reaso
 
 A feature ships with tests for the working path and the failure mode. A fix ships with the test
 that would have caught it.
+
+If the work finishes a `plan.md` §7 phase, update that phase's row in `README.md`'s Status table
+and any "not yet" language in the section it unblocks (e.g. Running locally, once Phase 1 ships) —
+in the same change, not a follow-up.
 
 ## 4. Verify, and show the output
 
